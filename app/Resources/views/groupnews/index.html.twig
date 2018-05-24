@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Groupnews list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Text</th>
+                <th>Title</th>
+                <th>Cover</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for groupNews in groupNews %}
+            <tr>
+                <td><a href="{{ path('groupnews_show', { 'id': groupNews.id }) }}">{{ groupNews.id }}</a></td>
+                <td>{{ groupNews.text }}</td>
+                <td>{{ groupNews.title }}</td>
+                <td>{{ groupNews.cover }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('groupnews_show', { 'id': groupNews.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('groupnews_edit', { 'id': groupNews.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('groupnews_new') }}">Create a new groupNews</a>
+        </li>
+    </ul>
+{% endblock %}
